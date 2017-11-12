@@ -1,10 +1,7 @@
-sudo: required
-dist: trusty
+sudo: false
 language: haskell
+install:
+  - cabal install hakyll
 script:
   - ghc --make site.hs
   - ./site build
-addons:
-  apt:
-    packages:
-      - haskell-hakyll
