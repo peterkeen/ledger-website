@@ -1,5 +1,8 @@
 sudo: false
 language: haskell
+cache:
+  directories:
+    - $HOME/.cabal
 install:
   - cabal install hakyll
 script:
