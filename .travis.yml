@@ -13,6 +13,8 @@ addons:
   apt:
     packages:
       - libgmp-dev
+      - texinfo
+      - tex
 
 before_install:
   - mkdir -p ~/.local/bin
