@@ -35,7 +35,7 @@ deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: 'ledger-website'
-  region: us-east-2
+  bucket: $AWS_S3_BUCKET
+  region: $AWS_S3_BUCKET_REGION
   local_dir: _site
   skip_cleanup: true
