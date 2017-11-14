@@ -16,7 +16,8 @@ addons:
       - texinfo
       - groff
       - texlive-base
-      - texlive-collection-latex
+      - texlive-latex-base
+      - texlive-latex-recommended
       - texlive-fonts-recommended
       - texlive-generic-recommended
 
