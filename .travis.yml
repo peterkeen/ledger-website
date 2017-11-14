@@ -1,25 +1,28 @@
 sudo: false
-dist: trusty
-language: haskell
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
 cache:
   directories:
-    - $HOME/.cabal/packages
-    - $HOME/.cabal/store
-    - $HOME/.cabal/bin
-    - $HOME/.stack/bin
-    - $HOME/.stack/precompiled
-    - $HOME/.stack/programs
-    - $HOME/.stack/setup-exe-cache
-    - $HOME/.stack/snapshots
-before_cache:
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/00-index*
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/01-index*
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/*.json    
+    - $HOME/.stack
+
+# Ensure necessary system libraries are present
+addons:
+  apt:
+    packages:
+      - libgmp-dev
+
+before_install:
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
 install:
-  - cabal install hakyll
+  - stack install hakyll
 script:
-  - ghc --make site.hs
+  - stack --no-terminal ghc site.hs
   - ./site build
 deploy:
   provider: s3
