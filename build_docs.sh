@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
 set -x
 
 mkdir -p _site/3.0/doc
@@ -14,3 +13,5 @@ makeinfo --force --html --no-split -o _site/3.0/doc/ledger-mode.html ledger-mode
 
 texi2pdf -b -V -o _site/3.0/doc/ledger3.pdf ledger3.texi
 groff -mandoc -Thtml ledger.1 > _site/3.0/doc/ledger.1.html
+
+texi2pdf -b -V -o _site/3.0/doc/ledger-mode.pdf ledger-mode.texi
