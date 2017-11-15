@@ -15,11 +15,11 @@ addons:
       - libgmp-dev
       - texinfo
       - groff
-      - texlive-base
-      - texlive-latex-base
-      - texlive-latex-recommended
+      - texlive
       - texlive-fonts-recommended
+      - texlive-generic-extra
       - texlive-generic-recommended
+      - texlive-latex-recommended
 
 before_install:
   - mkdir -p ~/.local/bin
